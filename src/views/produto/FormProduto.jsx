@@ -67,7 +67,7 @@ class FormProduto extends React.Component{
 									</Form.Input>
 
 									<Form.Input
-                                        
+                                        maxLength="2"
 										fluid
 										label='Tempo de Entrega Minimo em Minutos'
                                         width={6}>
@@ -76,6 +76,7 @@ class FormProduto extends React.Component{
 									</Form.Input>
 
                                     <Form.Input
+                                        maxLength="2"
                                         fluid
                                         input type="number"
                                         label='Tempo de Entrega Maximo em Minutos'
