@@ -1,8 +1,9 @@
+import axios from "axios";
 import React from "react";
 import InputMask from 'react-input-mask';
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
-class FormProduto extends React.Component{
+class FormProduto extends React.Component {
 
 	state = {
 
@@ -16,7 +17,7 @@ class FormProduto extends React.Component{
 
 	salvar = () => {
 
-		let clienteRequest = {
+		let produtoRequest = {
 
 			codigo: this.state.codigo,
 			descricao: this.state.descricao,
@@ -26,7 +27,7 @@ class FormProduto extends React.Component{
 			tempoEntregaMaximo: this.state.tempoEntregaMaximo
 		}
 
-		axios.post("http://localhost:8080/api/cliente", produtoRequest)
+		axios.post("http://localhost:8080/api/produto", produtoRequest)
 			.then((response) => {
 				console.log('Produto cadastrado com sucesso.')
 			})
@@ -35,22 +36,22 @@ class FormProduto extends React.Component{
 			})
 	}
 
-    render(){
-        return(
-            <div>
+	render() {
+		return (
+			<div>
 
-                <div style={{marginTop: '3%'}}>
+				<div style={{ marginTop: '3%' }}>
 
-                    <Container textAlign='justified' >
+					<Container textAlign='justified' >
 
-                        <h2> <span style={{color: 'darkgray'}}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
+						<h2> <span style={{ color: 'darkgray' }}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
 
-                        <Divider />
+						<Divider />
 
-						<div style={{marginTop: '4%'}}>
+						<div style={{ marginTop: '4%' }}>
 
 							<Form>
-                                <Form.Group widths='equal'>
+								<Form.Group widths='equal'>
 
 									<Form.Input
 										required
@@ -62,21 +63,21 @@ class FormProduto extends React.Component{
 									/>
 
 									<Form.Input
-                                        required
+										required
 										fluid
 										label='Codigo'
 										maxLength="3"
 										value={this.state.codigo}
-										onChange={e => this.setState({ codigo: e.target.value })}/>
+										onChange={e => this.setState({ codigo: e.target.value })} />
 
 
 								</Form.Group>
 
-                                <Form.Group widths='equal'>
+								<Form.Group widths='equal'>
 
 									<Form.TextArea
 										required
-                                        placeholder="Descreva..."
+										placeholder="Descreva..."
 										fluid
 										label='Descrição'
 										maxLength="100"
@@ -88,52 +89,49 @@ class FormProduto extends React.Component{
 								</Form.Group>
 
 
-								
+
 								<Form.Group>
 
 									<Form.Input
 										fluid
-                                        input type="number"
-                                        
+										input type="number"
+
 										label='Valor Unitario'
-                                        width={6}>
+										width={6}>
 										<InputMask
-                                        placeholder="000,00"
-										number="100,00"
-										value={this.state.valorUnitario}
-										onChange={e => this.setState({ valorUnitario: e.target.value })} /> 
+											placeholder="000,00"
+											number="100,00"
+											value={this.state.valorUnitario}
+											onChange={e => this.setState({ valorUnitario: e.target.value })} />
 									</Form.Input>
 
 									<Form.Input
-                                        maxLength="2"
+										maxLength="2"
 										fluid
 										label='Tempo de Entrega Minimo em Minutos'
-                                        width={6}>
-										<InputMask 
-										placeholder="30" 
-										value={this.state.tempoEntregaMinimo}
-										onChange={e => this.setState({ tempoEntregaMinimo: e.target.value })}/> 
+										width={6}>
+										<InputMask
+											placeholder="30"
+											value={this.state.tempoEntregaMinimo}
+											onChange={e => this.setState({ tempoEntregaMinimo: e.target.value })} />
 									</Form.Input>
 
-                                    <Form.Input
-                                        maxLength="2"
-                                        fluid
-                                        input type="number"
-                                        label='Tempo de Entrega Maximo em Minutos'
-                                        width={6}
-                                    >
-                                        <InputMask 
-                                            placeholder="40"
-                                            mask="" 
-                                            maskChar={null}
-											value={this.state.tempoEntregaMaximo}
-										onChange={e => this.setState({ tempoEntregaMaximo: e.target.value })}
-                                        /> 
-                                    </Form.Input>
+									<Form.Input
+										maxLength="2"
+										fluid
+										input type="number"
+										label='Tempo de Entrega Maximo em Minutos'
+										width={6}
+										placeholder="40"
+										maskChar={null}
+										value={this.state.tempoEntregaMaximo}
+										onChange={e => this.setState({ tempoEntregaMaximo: e.target.value })}>
+
+									</Form.Input>
 
 								</Form.Group>
 
-								<Form.Group widths='equal' style={{marginTop: '4%'}}  className='form--empresa-salvar'>
+								<Form.Group widths='equal' style={{ marginTop: '4%' }} className='form--empresa-salvar'>
 
 									<Button
 										type="button"
@@ -143,13 +141,13 @@ class FormProduto extends React.Component{
 										labelPosition='left'
 										color='orange'
 										onClick={this.listar}
-										>
+									>
 										<Icon name='reply' />
 										Voltar
 									</Button>
 
 									<Container textAlign='right'>
-										
+
 										<Button
 											inverted
 											circular
@@ -162,15 +160,15 @@ class FormProduto extends React.Component{
 											<Icon name='save' />
 											Salvar
 										</Button>
-										
+
 									</Container>
 
 								</Form.Group>
 
 							</Form>
 						</div>
-                    </Container>
-                </div>
+					</Container>
+				</div>
 			</div>
 		)
 	}
