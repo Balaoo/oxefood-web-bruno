@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import InputMask from 'react-input-mask';
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 
@@ -13,7 +14,7 @@ class FormEntregador extends React.Component {
 		dataNascimento: null,
 		foneCelular: null,
 		foneFixo: null,
-		entregasRealizadas: null,
+		qtdEntregasRealizadas: null,
 		valorFrete: null,
 		enderecoRua: null,
 		enderecoNumero: null,
@@ -36,7 +37,7 @@ class FormEntregador extends React.Component {
 			dataNascimento: this.state.dataNascimento,
 			foneCelular: this.state.foneCelular,
 			foneFixo: this.state.foneFixo,
-			entregasRealizadas: this.state.entregasRealizadas,
+			qtdEntregasRealizadas: this.state.qtdEntregasRealizadas,
 			valorFrete: this.state.valorFrete,
 			enderecoRua: this.state.enderecoRua,
 			enderecoNumero: this.state.enderecoNumero,
@@ -152,8 +153,8 @@ class FormEntregador extends React.Component {
 										fluid
 										label='Qntd entregas realizadas'
 										width={4}
-										value={this.state.entregasRealizadas}
-										onChange={e => this.setState({ entregasRealizadas: e.target.value })}>
+										value={this.state.qtdEntregasRealizadas}
+										onChange={e => this.setState({ qtdEntregasRealizadas: e.target.value })}>
 									</Form.Input>
 
 									<Form.Input
@@ -306,7 +307,7 @@ class FormEntregador extends React.Component {
 										onClick={this.listar}
 									>
 										<Icon name='reply' />
-										Voltar
+										<Link to={'/list-entregador'}>Voltar</Link>
 									</Button>
 
 									<Container textAlign='right'>
