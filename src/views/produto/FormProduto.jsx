@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import InputMask from 'react-input-mask';
+import { Link } from "react-router-dom";
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 class FormProduto extends React.Component {
@@ -119,14 +120,12 @@ class FormProduto extends React.Component {
 									<Form.Input
 										maxLength="2"
 										fluid
-										input type="number"
 										label='Tempo de Entrega Maximo em Minutos'
-										width={6}
-										placeholder="40"
-										maskChar={null}
-										value={this.state.tempoEntregaMaximo}
-										onChange={e => this.setState({ tempoEntregaMaximo: e.target.value })}>
-
+										width={6}>
+										<InputMask
+											placeholder="30"
+											value={this.state.tempoEntregaMaximo}
+											onChange={e => this.setState({ tempoEntregaMaximo: e.target.value })} />
 									</Form.Input>
 
 								</Form.Group>
@@ -143,7 +142,7 @@ class FormProduto extends React.Component {
 										onClick={this.listar}
 									>
 										<Icon name='reply' />
-										Voltar
+										<Link to={'/list-produto'}>Voltar</Link>
 									</Button>
 
 									<Container textAlign='right'>
